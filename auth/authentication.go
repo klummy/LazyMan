@@ -1,4 +1,4 @@
-package auth
+package lmauth
 
 import (
 	"context"
@@ -22,7 +22,7 @@ func FirebaseApp(credentialsPath string) (*firebase.App, error) {
 }
 
 // VerifyIDToken - Validate a given Firebase client
-func VerifyIDToken(ctx context.Context, idToken string, firebaseApp *firebase.App) (*auth.Token, error) {
+func VerifyIDToken(ctx context.Context, firebaseApp *firebase.App, idToken string) (*auth.Token, error) {
 	client, clientErr := firebaseApp.Auth(ctx)
 	if clientErr != nil {
 		log.Println("Error getting Firebase auth client: ", clientErr)
